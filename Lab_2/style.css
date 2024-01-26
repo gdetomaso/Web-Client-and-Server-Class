@@ -1,0 +1,62 @@
+#page-title {
+    color: rgb(15, 3, 140);
+    font-size: 24px;
+  }
+
+  .favorite-section h2.section-header {
+    font-size: 20px;
+    color: green;
+  }
+  
+  body {
+    background-color: #ffa600;
+    color: #2e2d2d;
+    font-family: 'Arial', sans-serif;
+    
+  }
+  
+  #favorite-movie-title {
+    font-style: italic;
+    color: purple;
+  }
+  
+  #favorite-music-name {
+    font-weight: bold;
+    color: red;
+  }
+  
+  #most-favorite-food {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  
+  .favorite-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    width: 500px;
+    height: 650px;
+  }
+  
+  .favorite-image:hover {
+    transform: scale(1.1);
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th {
+    background-color: lightblue;
+    color: darkblue;
+    border: 1px solid darkblue;
+    padding: 8px;
+  }
+  
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  

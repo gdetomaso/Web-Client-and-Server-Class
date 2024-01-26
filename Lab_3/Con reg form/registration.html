@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>Conference Registration Form</title>
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,600;1,200&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+
+    <div class="form-container m-2 p-2" >
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" maxlength="70" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="tshirtSize">T-shirt Size:</label>
+                <select class="form-control" id="tshirtSize" name="tshirtSize" required>
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" class="form-control" id="dob" name="dob" required>
+            </div>
+
+            <div class="form-group">
+                <label>Receive Email Updates?</label>
+                <div>
+                    <input type="radio" id="yes" name="emailUpdates" value="yes" required>
+                    <label for="yes">Yes</label>
+
+                    <input type="radio" id="no" name="emailUpdates" value="no" required>
+                    <label for="no">No</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Choose Sessions:</label>
+                <div>
+                    <input type="checkbox" id="morningSession" name="morningSession">
+                    <label for="morningSession">Morning Session</label>
+
+                    <input type="checkbox" id="afternoonSession" name="afternoonSession">
+                    <label for="afternoonSession">Afternoon Session</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="specialRequests">Special Requests:</label>
+                <textarea class="form-control" id="specialRequests" name="specialRequests" rows="7" cols="70"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+
+</body>
+</html>
