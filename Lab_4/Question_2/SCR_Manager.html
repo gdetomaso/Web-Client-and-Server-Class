@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Club Membership</title>
+
+  <style>
+      
+      .selected {
+        text-decoration: line-through ;
+        font-style: italic;
+        color: gray;
+      }
+
+      input {
+          width: 100%;
+          padding: 5px;
+          margin: 5px 5px 5px 0px;
+          box-sizing: border-box;
+
+      }
+
+  </style>
+
+</head>
+<body>
+
+    <h1>Student Club Roster</h1>
+
+    <h2>Add Students</h2>
+
+    <label for="student-name">Student Name</label><input id="student-name" name="student-name">
+    <br>
+    <label for="student-id">Student ID</label><input id="student-id" name="student-id">
+    <br>
+    <label for="student-gpa">Student GPA</label><input id="student-gpa" name="student-gpa" type="number">
+    <br>
+    <button id="add-student">Add Student</button>    
+
+    <h2>Student List</h2>
+
+    <p>There are 
+        <span id="student-count">
+          <!-- use JavaScript to count the number of students, and show here -->
+        </span> 
+    student(s) in the club.</p>
+    
+    <p>Click on a student's name to select them</p>
+
+    <ul id="student-list">
+        <!-- use JavaScript to create li elements  -->
+    </ul>
+
+    <button id="remove-selected-students">Remove selected students</button>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+        
+          // Initialize student count
+          var studentCount = 0;
+          var studentCountSpan = document.getElementById("student-count");
+          studentCountSpan.textContent = studentCount;
+        
+          // Add student button click event listener
+          var addStudentButton = document.getElementById("add-student");
+          addStudentButton.addEventListener("click", function () {
+        
+            // Read input values
+            var studentNameInput = document.getElementById("student-name");
+            var studentIdInput = document.getElementById("student-id");
+            var studentGpaInput = document.getElementById("student-gpa");
+        
+            var name = studentNameInput.value.trim();
+            var id = studentIdInput.value.trim();
+            var gpa = parseFloat(studentGpaInput.value);
+        
+            // Validate inputs
+            if (name === "") {
+              alert("Please enter the student's name.");
+              return;
+            }
+        
+            if (id === "") {
+              alert("Please enter the student's ID.");
+              return;
+            }
+        
+            if (isNaN(gpa) || gpa < 0 || gpa > 4) {
+              alert("Please enter a valid GPA between 0 and 4.");
+              return;
+            }
+        
+            // Create new list item
+            var newLi = document.createElement("li");
+            newLi.innerHTML = `${name}, id: ${id}, GPA ${gpa}`;
+            newLi.addEventListener("click", function () {
+              // Toggle selected class on click
+              if (newLi.classList.contains("selected")) {
+                newLi.classList.remove("selected");
+              } else {
+                newLi.classList.add("selected");
+              }
+            });
+        
+            // Add new list item to student list
+            var studentList = document.getElementById("student-list");
+            studentList.appendChild(newLi);
+        
+            // Clear input values
+            studentNameInput.value = "";
+            studentIdInput.value = "";
+            studentGpaInput.value = "";
+        
+            // Update student count
+            studentCount++;
+            studentCountSpan.textContent = studentCount;
+          });
+        
+          // Remove selected students button click event listener
+          var removeSelectedButton = document.getElementById("remove-selected-students");
+          removeSelectedButton.addEventListener("click", function () {
+            var selectedStudents = document.querySelectorAll(".selected");
+            selectedStudents.forEach(function (student) {
+              student.remove();
+            });
+        
+            // Update student count
+            studentCount -= selectedStudents.length;
+            studentCountSpan.textContent = studentCount;
+          });
+        });
+        
+        </script>
+
+</body>
+</html>

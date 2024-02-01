@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Dynamic List</h1>
+
+<input type="text" id="inputText" placeholder="Type text...">
+<button onclick="addItem()">Add to List</button>
+<button onclick="clearList()">Clear List</button>
+    
+<ul id="itemList"></ul>
+    
+    <script>
+        function addItem() {
+            // Get the input text
+            var inputText = document.getElementById("inputText").value;
+    
+            // Check if no text is entered
+            if (inputText.trim() === "") {
+                return;
+            }
+    
+            // Check text length
+            if (inputText.length > 50) {
+                alert("Text is too long (more than 50 characters).");
+                return;
+            }
+    
+            // Check if the number of items is less than 10
+            var itemList = document.getElementById("itemList");
+            if (itemList.children.length >= 10) {
+                alert("You can't add more than 10 items.");
+                return;
+            }
+    
+            // Create a new list item
+            var newItem = document.createElement("li");
+            newItem.appendChild(document.createTextNode(inputText));
+    
+            // Append the new item to the list
+            itemList.appendChild(newItem);
+    
+            // Clear the input text
+            document.getElementById("inputText").value = "";
+        }
+    
+        function clearList() {
+            // Clear all items from the list
+            var itemList = document.getElementById("itemList");
+            while (itemList.firstChild) {
+                itemList.removeChild(itemList.firstChild);
+            }
+        }
+    </script>
+    
+    </body>
+    </html>
