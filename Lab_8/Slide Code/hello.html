@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Hello Vue</h1>
+        <label for="name">Please enter your name: </label>
+        <input v-model="name" id="name">
+
+        <div v-if="name">
+            <p>Your name is {{ name }}</p>
+            <button v-on:click="clearName">Clear Input</button>
+        </div>
+        <div v-else>
+            <p></p> 
+        </div>
+    </div>
+
+    <script>
+        const { createApp, ref } = Vue 
+
+        createApp({
+            setup() {
+
+                const name = ref('')  // Empty string 
+
+                function clearName() {
+                    name.value = ''
+                }
+
+                return {
+                    name, clearName
+                }  
+            }
+        }).mount('#app')
+
+    </script>
+</body>
+</html>

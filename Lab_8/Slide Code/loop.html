@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vue Task List</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Vue Loops</h1>
+        <label for="task">Please enter your to-do task: </label>
+        <input v-model="newTask" id="task">
+        <button v-on:click="addTask">Add Task</button>
+
+        <h2>Your task list</h2>
+        <ul>
+            <li v-for="task in taskList">
+                {{ task }}
+            </li>
+        </ul>   
+
+        <button v-on:click="clearList">All done!</button>
+    </div>
+
+    <script>
+
+        const { createApp, ref } = Vue 
+
+        createApp({
+            setup() {
+
+                const taskList = ref([])
+                const newTask = ref('')
+
+                const addTask = () => {
+                    if (newTask.value) {
+                        taskList.value.push(newTask.value)   // add to the task list
+                        newTask.value = ''  // clear the text
+                    }
+                }
+
+                const clearList = () => {
+                    taskList.value = []
+                }
+
+                return {
+                    taskList,newTask,addTask,clearList
+                }  
+            }
+        }).mount('#app')
+
+    </script>
+
+</body>
+</html>
